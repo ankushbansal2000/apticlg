@@ -1,0 +1,132 @@
+<div class="mainDiv">
+    <div class="headerWrap">
+        <div class="imageWrapHeader">
+            <img src="../../assets/mukandlogo.png">
+        </div>
+        <div class="headingParaWrap">
+            <b> Seth Jai Parkash Mukand Lal Institute of Technology</b>
+        </div>
+    </div>
+    <div class="totalQuestionsWrap">
+        <div class="totalQuestionParaWrap">
+            Total Questions : {{this.totalQuestions}}<br>
+            <div *ngIf="isTimePeriod">
+                Time: {{this.timeLeft}} seconds left
+            </div>
+        </div>
+    </div>
+    <div class="container" *ngIf="!isResult">
+
+        <form #aptiForm="ngForm" method="post">
+            <div class="cardDiv">
+                <div class="card" *ngFor="let item of questionsData">
+                    <div class="questionWrap">
+                        <b> Q {{this.page}}) {{item.question}}</b>
+                    </div>
+                    <div class="answerWrap">
+
+                        <input type="radio" required [(ngModel)]="verifyAnswer._id" verifyAnswer._id="ngModel" value="a"
+                            name={{item._id}}>
+                        <label class="optionLabelWrap"> {{item.optionA}}</label><br>
+
+
+                        <input type="radio" [(ngModel)]="verifyAnswer._id" verifyAnswer._id="ngModel" value="b"
+                            name={{item._id}}>
+                        <label class="optionLabelWrap"> {{item.optionB}}</label><br>
+
+                        <input type="radio" [(ngModel)]="verifyAnswer._id" verifyAnswer._id="ngModel" value="c"
+                            name={{item._id}}>
+                        <label class="optionLabelWrap"> {{item.optionC}}</label><br>
+
+                        <input type="radio" [(ngModel)]="verifyAnswer._id" verifyAnswer._id="ngModel" value="d"
+                            name={{item._id}}>
+                        <label class="optionLabelWrap"> {{item.optionD}}</label><br>
+
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="buttonWrap" *ngIf="isNextQuestion">
+                        <div class="buttonDiv">
+                            <button class="btn btn-primary" (click)="onNextQuestion(verifyAnswer)">Next</button>
+                        </div>
+                        <div class="buttonDiv">
+                            <button class="btn btn-primary" (click)="skip()">Skip</button>
+                        </div>
+                    </div>
+
+
+                    <div class="buttonWrap" *ngIf="!isNextQuestion">
+                        <div class="buttonDiv">
+                            <button class="btn btn-primary" (click)="onSubmit(verifyAnswer)">Submit</button>
+                        </div>
+                        <div class="buttonDiv">
+                            <button class="btn btn-primary" (click)="skipSubmit()">Skip & Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  <div class="scoreCardWrap" *ngFor="let i of array ">
+        <div class="card">
+            <div class="numberOfQuestion">
+                {{i}}
+            </div>
+            <div class="buttonMakingWrap">
+
+            </div>
+        </div>
+       
+
+    </div> -->
+        </form>
+    </div>
+
+
+    <div class="container" *ngIf="isResult">
+        <div class="card resultWrap">
+            <div class="scoreWrap">
+                <div class="subjectWrap">
+                    Score
+                </div>
+                <div class="detailsWrap">
+                    {{this.totalQuestionsNumber}}
+                </div>
+            </div>
+        </div>
+
+        <div class="card resultWrap">
+                <div class="correctWrap">
+                    <div class="subjectWrap">
+                        Correct
+                    </div>
+                    <div class="detailsWrap">
+                    <p *ngFor="let i of CorrectAnswer">Q {{i}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card resultWrap">
+                    <div class="wrongWrap">
+                        <div class="subjectWrap">
+                            Wrong
+                        </div>
+                        <div class="detailsWrap">
+                        <p *ngFor="let i of WrongAnswer">Q {{i}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card resultWrap">
+                        <div class="skipWrap">
+                            <div class="subjectWrap">
+                                Skip
+                            </div>
+                            <div class="detailsWrap">
+                            <p *ngFor="let i of SkipAnswer">Q {{i}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+    </div>
+</div>

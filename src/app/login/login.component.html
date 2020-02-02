@@ -1,0 +1,42 @@
+<div class="loginpage">
+    <div class="loginimage">
+      <img src="../../assets/mukandlogo.png" width="225px" height="140px">
+    </div>
+
+    <div class="loginform">
+      <form #loginform="ngForm" method="post" (ngSubmit)="onLogin(loginData)">
+        <div class="form-group">
+          <label for="username">Email ID</label>
+          <input  name="email" #email = "ngModel"
+          type="email" class="form-control" [(ngModel)]="loginData.email"
+            id="username" placeholder="Enter email" minlength="4" required>
+            <div *ngIf="email.invalid && email.dirty" class="text-danger">
+              Please Enter the email of atleast 4 digit
+            </div>
+         
+          
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input name="password" type="password" [(ngModel)]="loginData.password" class="form-control" id="password"
+           #password="ngModel" placeholder="Enter password" required>
+           <div *ngIf="password.invalid && password.dirty" class="text-danger">
+            Please Enter the password
+          </div>
+        
+        </div>
+        <div class="form-group">
+          <button type="submit" [disabled]="!loginform.form.valid" class="btn btn-primary">Login</button>
+        </div>
+
+        <div class="form-group">
+          <p class="createUserWrap" [routerLink]="['/registration']" >Create a new user</p>
+        </div>
+
+        <div class="form-group">
+          <p class="createUserWrap" [routerLink]="['/forgotpassword']" >Forgot Password</p>
+        </div>
+      </form>
+  
+    </div>
+</div>

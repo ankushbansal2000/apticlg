@@ -1,0 +1,77 @@
+<div class="mainWrap">
+
+<div class="headerWrap">
+<div class="imageWrapHeader">
+    <img src="../../assets/mukandlogo.png">
+</div>
+<div class="headingParaWrap">
+  <b>  Seth Jai Parkash Mukand Lal Institute of Technology</b>
+</div>
+</div>
+
+<form #registrationForm="ngForm" method="post" (ngSubmit)="onSubmit(newRegistration)">
+<div class="rowWrap">
+    <div class="InformationPutWrap">
+        Enter Applicant's Name 
+        <span style="color: red">*</span>
+    </div>
+    <div class="InformationGetWrap">
+        <input type="text"  name="name" #name="ngModel" class="form-control" [(ngModel)]="newRegistration.name" required>
+     <div *ngIf="name.invalid && name.dirty" class="text-danger">
+        Please Enter the name
+      </div></div> 
+   
+</div>
+<div class="rowWrap">
+    <div class="InformationPutWrap">
+        Enter Roll Number 
+        <span style="color: red">*</span>
+    </div>
+    <div class="InformationGetWrap">
+        <input type="number"  name="roll" #roll="ngModel" class="form-control" [(ngModel)]="newRegistration.roll" required>
+        <div *ngIf="roll.invalid && roll.dirty" class="text-danger">
+            Please Enter the rollNumber
+          </div>
+    </div> 
+</div>
+
+<div class="rowWrap">
+        <div class="InformationPutWrap">
+            Enter Institute Email 
+            <span style="color: red">*</span>
+        </div>
+        <div class="InformationGetWrap">
+            <input type="text"  name="email" #email="ngModel" class="form-control" [(ngModel)]="newRegistration.email" pattern="[a-zA-Z0-9.-_]{1,}@jmit.ac.in"  required>
+            <div *ngIf="email.invalid && email.dirty" class="text-danger">
+                Please Enter the email of pattern @jmit.ac.in
+              </div>
+        </div> 
+    </div>
+
+    <div class="rowWrap">
+        <div class="InformationPutWrap">
+            Enter Branch
+            <span style="color: red">*</span>
+        </div>
+        <div class="InformationGetWrap">
+            <input type="text"  name="branch" #branch="ngModel" class="form-control" [(ngModel)]="newRegistration.branch" required>
+        </div> 
+    </div>
+
+    <div class="rowWrap">
+        <div class="InformationPutWrap">
+            Select Batch
+            <span style="color: red">*</span>
+        </div>
+        <div class="InformationGetWrap">
+            <input type="text"  name="batch" #batch="ngModel" class="form-control" [(ngModel)]="newRegistration.batch" required>
+        </div> 
+    </div>
+
+<div class="buttonWrap">
+        <div class="buttonDiv">
+        <button class="btn btn-primary" [disabled]="!registrationForm.form.valid">Submit</button>
+    </div>
+    </div>
+</form>
+</div>

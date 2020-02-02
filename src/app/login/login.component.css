@@ -1,0 +1,49 @@
+
+.loginpage
+{
+float: left;
+width: 100%;
+min-height: 100vh;
+background-image: url('../../assets/jmitPic.jpg');
+background-repeat: no-repeat;
+background-size: cover ;
+}
+
+
+.loginimage
+{
+width: 235px;
+margin-left: 41%;
+margin-top: 6%;
+}
+
+
+
+.loginform
+{
+width: 30%;
+margin-left: 35%;
+margin-right: 35%; 
+margin-top: 5%;
+
+padding: 26px;
+border-top-right-radius: 10%;
+}
+
+div.form-group:nth-child(3)
+{
+margin-left: 40%;
+margin-top:  15%;
+}
+
+.createUserWrap {
+    float: left;
+    width: 100%;
+    color: white;
+ 
+    text-align: center;
+}
+.createUserWrap:hover {
+    cursor: pointer;
+    font-size: 18px;
+}
