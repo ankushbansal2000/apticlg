@@ -17,8 +17,11 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(loginData : Loginuser) {
-    this.apiService.isLoginId(loginData).subscribe(data => {
-    sessionStorage.setItem('token', this.token);
+    this.apiService.isLoginId(loginData).subscribe(data=> {
+   let dummy =   data as Loginuser;
+   console.log(dummy);
+    sessionStorage.setItem('token', dummy._id);
+    sessionStorage.setItem('highestScore', dummy.highestScore);
     this.router.navigate(["/paper"]); 
       },
         error => {

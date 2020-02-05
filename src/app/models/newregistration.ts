@@ -5,4 +5,5 @@ export class NewRegistration {
     password: string;
     branch: string;
     batch: string;
+    highestScore: number;
 }

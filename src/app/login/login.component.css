@@ -25,16 +25,11 @@ width: 30%;
 margin-left: 35%;
 margin-right: 35%; 
 margin-top: 5%;
-
 padding: 26px;
 border-top-right-radius: 10%;
 }
 
-div.form-group:nth-child(3)
-{
-margin-left: 40%;
-margin-top:  15%;
-}
+
 
 .createUserWrap {
     float: left;
@@ -46,4 +41,18 @@ margin-top:  15%;
 .createUserWrap:hover {
     cursor: pointer;
     font-size: 18px;
+}
+
+@media screen and (max-width: 800px) {
+
+    .loginform {
+        margin-left: 0px;
+        margin-right: 0px;
+        width: 80%;
+        padding: 20px;
+    }
+    .loginimage
+{
+    margin-left: 15%;
+}
 }

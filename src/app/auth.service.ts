@@ -31,11 +31,12 @@ export class AuthService {
   }
 
   updatePassword(email: string, body: NewRegistration) {
-    console.log(email);
-    console.log(body);
     return this.httpClient.put(this.baseUrl + '/search/email/' + email , body);
   }
 
+  updateHighestScore(id: string, body: NewRegistration) {
+    return this.httpClient.put(this.baseUrl + '/updateScore/' + id , body);
+  }
 
 
 }

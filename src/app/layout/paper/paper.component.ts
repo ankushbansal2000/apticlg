@@ -1,3 +1,4 @@
+import { NewRegistration } from './../../models/newregistration';
 import { CountCorrectAnswer } from './../../models/countquestion';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth.service';
@@ -26,6 +27,9 @@ export class PaperComponent implements OnInit {
   timeLeft: number = 13;
   interval;
   isTimePeriod: boolean = true;
+  public highestScore = {} as NewRegistration;
+  id: string;
+  previousHighestScore: string;
 
   constructor(private apiService: AuthService, public router: Router) {
     this.verifyAnswer = new QuestionsData;
@@ -35,6 +39,7 @@ export class PaperComponent implements OnInit {
     this.pagination(this.page);
     this.totalPage();
     this.startTimer();
+    this.previousHighestScore = sessionStorage.getItem('highestScore');
   }
 
   startTimer() {
@@ -44,11 +49,11 @@ export class PaperComponent implements OnInit {
         this.timeLeft--;
       } else {
         if (this.page === this.totalQuestions) {
-          this.skipSubmit();
           this.isTimePeriod = false;
+          this.skipSubmit();
         } else {
           this.skip();
-          this.page = this.page + 1;
+          //    this.page = this.page + 1;
           this.timeLeft = 13;
         }
       }
@@ -84,7 +89,7 @@ export class PaperComponent implements OnInit {
       this.CorrectAnswer.push(this.page);
       this.totalQuestionsNumber += 10;
     } else {
-   this.WrongAnswer.push(this.page);
+      this.WrongAnswer.push(this.page);
     }
     this.verifyAnswer = new QuestionsData;
     this.page = this.page + 1;
@@ -111,22 +116,35 @@ export class PaperComponent implements OnInit {
     this.verifyAnswer = new QuestionsData;
     this.isResult = true;
     this.isTimePeriod = false;
+
+ 
+    if (this.previousHighestScore < this.totalQuestionsNumber + '') {
+      this.highestScore.highestScore = this.totalQuestionsNumber;
+      this.submitHeighestScore(this.highestScore);
+    }
+
     clearInterval(this.interval);
+  }
+
+  submitHeighestScore(data: NewRegistration) {
+    this.id = sessionStorage.getItem('token');
+    this.apiService.updateHighestScore(this.id, data).subscribe(data => {
+    });
+
   }
 
 
   skip() {
-    console.log("skip");
-     this.SkipAnswer.push(this.page);
+    this.SkipAnswer.push(this.page);
     this.page = this.page + 1;
-  
-   if (this.page === this.totalQuestions) {
-   this.pagination(this.page);
-     this.isNextQuestion = false;
+
+    if (this.page === this.totalQuestions) {
+      this.pagination(this.page);
+      this.isNextQuestion = false;
     } else {
-    this.pagination(this.page);
-   }
-   clearInterval(this.interval);
+      this.pagination(this.page);
+    }
+    clearInterval(this.interval);
     this.startTimer();
   }
 
@@ -135,6 +153,10 @@ export class PaperComponent implements OnInit {
     this.isTimePeriod = false;
     this.SkipAnswer.push(this.page);
     clearInterval(this.interval);
+    if (this.previousHighestScore < this.totalQuestionsNumber + '') {
+      this.highestScore.highestScore = this.totalQuestionsNumber;
+      this.submitHeighestScore(this.highestScore);
+    }
   }
 
 
