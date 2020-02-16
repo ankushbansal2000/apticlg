@@ -64,6 +64,7 @@ export class PaperComponent implements OnInit {
     this.apiService.totalPageQuestions()
       .subscribe((data: number) => {
         this.totalQuestions = data;
+        console.log("total questions is " + this.totalQuestions);
         this.CheckedQuestion();
       });
   }
@@ -149,6 +150,7 @@ export class PaperComponent implements OnInit {
   }
 
   skipSubmit() {
+    console.log("skip submit");
     this.isResult = true;
     this.isTimePeriod = false;
     this.SkipAnswer.push(this.page);
