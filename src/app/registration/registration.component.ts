@@ -24,7 +24,7 @@ export class RegistrationComponent implements OnInit {
 
   randomString() {
     const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
-    const stringLength = 9;
+    const stringLength = 6;
     let randomstring = '';
     for (let i = 0; i < stringLength; i++) {
     const rnum = Math.floor(Math.random() * chars.length);
