@@ -7,7 +7,7 @@ app.use(express.static(__dirname + '/dist/apticlg'));
 // Start the app by listening on the default
 
 // Heroku port
-app.get('/', function(req,res) {
+app.get('/*', function(req,res) {
 res.sendFile(path.join(__dirname + '/dist/apticlg/index.html'));
 });
 
