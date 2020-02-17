@@ -24,7 +24,7 @@ export class PaperComponent implements OnInit {
   totalAnswer: number;
   totalQuestions: number;
   array: Array<number> = [];
-  timeLeft: number = 13;
+  timeLeft: number = 120;
   interval;
   isTimePeriod: boolean = true;
   public highestScore = {} as NewRegistration;
@@ -44,7 +44,7 @@ export class PaperComponent implements OnInit {
   }
 
   startTimer() {
-    this.timeLeft = 13;
+    this.timeLeft = 120;
     this.interval = setInterval(() => {
       if (this.timeLeft > 0) {
         this.timeLeft--;
@@ -55,7 +55,7 @@ export class PaperComponent implements OnInit {
         } else {
           this.skip();
           //    this.page = this.page + 1;
-          this.timeLeft = 13;
+          this.timeLeft = 120;
         }
       }
     }, 1000)
