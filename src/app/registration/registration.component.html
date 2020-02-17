@@ -1,7 +1,7 @@
 <div class="mainWrap">
 
 <div class="headerWrap">
-<div class="imageWrapHeader">
+<div class="imageWrapHeader" routerLink="../dashboard">
     <img src="../../assets/mukandlogo.png">
 </div>
 <div class="headingParaWrap">
@@ -60,11 +60,21 @@
 
     <div class="rowWrap">
         <div class="InformationPutWrap">
-            Select Batch
+            Enter Batch
             <span style="color: red">*</span>
         </div>
         <div class="InformationGetWrap">
             <input type="text"  name="batch" #batch="ngModel" class="form-control" [(ngModel)]="newRegistration.batch" required>
+        </div> 
+    </div>
+
+    <div class="rowWrap">
+        <div class="InformationPutWrap">
+            Enter Password
+            <span style="color: red">*</span>
+        </div>
+        <div class="InformationGetWrap">
+            <input type="text"  name="password" #password="ngModel" class="form-control" [(ngModel)]="newRegistration.password" required>
         </div> 
     </div>
 

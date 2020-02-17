@@ -40,9 +40,9 @@ export class RegistrationComponent implements OnInit {
   onSubmit(newRegistration: NewRegistration) {
    
 if(newRegistration.email.includes(newRegistration.roll +'')) {
-  this.randomString();
+ // this.randomString();
     this.apiService.createLoginId(newRegistration).subscribe(data => {
-      alert('You Successfully registered. Check your email for Password');
+      alert('You Successfully registered.');
   this.router.navigate(['/login']);
     },
       error => {

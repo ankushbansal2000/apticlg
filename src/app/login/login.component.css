@@ -43,12 +43,20 @@ border-top-right-radius: 10%;
     font-size: 18px;
 }
 
+.buttonWrap {
+    float: left;
+    width: 100%;
+}
+.buttontagWrap {
+    margin-left: 40%;
+}
+
 @media screen and (max-width: 800px) {
 
     .loginform {
         margin-left: 0px;
         margin-right: 0px;
-        width: 80%;
+        width: 100%;
         padding: 20px;
     }
     .loginimage

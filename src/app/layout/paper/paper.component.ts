@@ -30,6 +30,7 @@ export class PaperComponent implements OnInit {
   public highestScore = {} as NewRegistration;
   id: string;
   previousHighestScore: string;
+  isLoader : boolean = true;
 
   constructor(private apiService: AuthService, public router: Router) {
     this.verifyAnswer = new QuestionsData;
@@ -38,7 +39,7 @@ export class PaperComponent implements OnInit {
   ngOnInit() {
     this.pagination(this.page);
     this.totalPage();
-    this.startTimer();
+  
     this.previousHighestScore = sessionStorage.getItem('highestScore');
   }
 
@@ -73,6 +74,9 @@ export class PaperComponent implements OnInit {
     this.apiService.questionsPagination(page)
       .subscribe((data: QuestionsData[]) => {
         this.questionsData = data;
+       this.isLoader = false; 
+        this.startTimer();
+       
       });
   }
 

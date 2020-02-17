@@ -30,6 +30,7 @@ export class ForgotpasswordComponent implements OnInit {
 
 
   onSearch(data: NewRegistration) {
+    console.log(data);
     this.randomString();
     this.apiService.updatePassword(this.newRegistration.email, data).subscribe(data => {
       alert('Check your email id for new password');

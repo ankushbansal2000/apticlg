@@ -10,6 +10,7 @@ import { QuestionsData } from './models/questionsData';
 export class AuthService {
 
   baseUrl: string = "https://aptiback.herokuapp.com/jmit/test";
+  //baseUrl: string = "http://localhost:4600/jmit/test"; 
   constructor(private httpClient: HttpClient) { }
 
   createLoginId(loginData: NewRegistration) {

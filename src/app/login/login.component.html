@@ -26,16 +26,20 @@
         
         </div>
         <div class="form-group">
-          <button type="submit" [disabled]="!loginform.form.valid" class="btn btn-primary">Login</button>
+          <div class="buttonWrap">
+            <button type="submit" [disabled]="!loginform.form.valid" class="btn btn-primary buttontagWrap">Login</button>
         </div>
+      </div>
+
 
         <div class="form-group">
           <p class="createUserWrap" [routerLink]="['/registration']" >Create a new user</p>
         </div>
 
-        <div class="form-group">
+      <!--<div class="form-group">
           <p class="createUserWrap" [routerLink]="['/forgotpassword']" >Forgot Password</p>
         </div>
+ -->  
       </form>
   
     </div>
