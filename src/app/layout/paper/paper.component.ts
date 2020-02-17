@@ -39,7 +39,7 @@ export class PaperComponent implements OnInit {
   ngOnInit() {
     this.pagination(this.page);
     this.totalPage();
-  
+    this.startTimer();
     this.previousHighestScore = sessionStorage.getItem('highestScore');
   }
 
@@ -74,9 +74,7 @@ export class PaperComponent implements OnInit {
     this.apiService.questionsPagination(page)
       .subscribe((data: QuestionsData[]) => {
         this.questionsData = data;
-       this.isLoader = false; 
-        this.startTimer();
-       
+       this.isLoader = false;
       });
   }
 
@@ -121,13 +119,10 @@ export class PaperComponent implements OnInit {
     this.verifyAnswer = new QuestionsData;
     this.isResult = true;
     this.isTimePeriod = false;
-
- 
     if (this.previousHighestScore < this.totalQuestionsNumber + '') {
       this.highestScore.highestScore = this.totalQuestionsNumber;
       this.submitHeighestScore(this.highestScore);
     }
-
     clearInterval(this.interval);
   }
 
@@ -135,9 +130,7 @@ export class PaperComponent implements OnInit {
     this.id = sessionStorage.getItem('token');
     this.apiService.updateHighestScore(this.id, data).subscribe(data => {
     });
-
   }
-
 
   skip() {
     this.SkipAnswer.push(this.page);
