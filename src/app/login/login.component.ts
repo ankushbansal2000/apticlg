@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
    let dummy =   data as Loginuser;
     sessionStorage.setItem('token', dummy._id);
     sessionStorage.setItem('highestScore', dummy.highestScore);
-    this.router.navigate(["/paper"]); 
+    this.router.navigate(["/dashboard"]); 
       },
         error => {
           alert(error.error.text);
